@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>귀찮은거 제거킷</title>
+
+        <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/backoffice.css" rel="stylesheet">
+	
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+		
+		var goRegIssue = "[클라우드/회사명] 문의문의문의문의문의문의";
+		var splArr = goRegIssue.split(']');
+		$("#goReg").val(goRegIssue);
+		$("#goRegView").val("[문제현상]\n"
+						  + "1."+splArr[1]+"\n"
+						  + "\n"
+						  + "[테스트]\n"
+						  + "1. 현상 녹화파일 첨부"
+						  );
+						  
+		$("#goRegMes").val("GO-35077\n"
+						  + $("#goReg").val()
+						  );
+						  
+		$("#goIssueTab").click(function(){
+			
+		})
+
+		$("#goReg").change(function(){
+			var goRegIssue = $("#goReg").val();
+			var splArr = goRegIssue.split(']');
+			
+			$("#goRegView").val("[문제현상]\n"
+						  + "1."+splArr[1]+"\n"
+						  + "\n"
+						  + "[테스트]\n"
+						  + "1. 현상 녹화파일 첨부"
+						  );
+		
+			$("#goRegMes").val("GO-35077\n"
+							+ $("#goReg").val()
+							);
+		});
+		
+		
+		});
+	</script>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+<div class="container-fluid">
+  <div class="row">
+   
+    <main role="main" class="col-md-9">
+	
+      <p>
+		<a href="#" class="btn btn-primary my-2">GO이슈 생성기</a>
+      </p>
+
+	  <div id="goIssueTab" style="display:;" >
+		  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+			<h1 class="h2">GO이슈 생성기</h1>
+			
+		  </div>
+		  <div class="container">
+			<textarea rows="3" cols="50" id="goReg" ></textarea><br>
+			<textarea rows="5" cols="50" id="goRegView" ></textarea><br>
+			<textarea rows="3" cols="50" id="goRegMes" ></textarea>
+		  </div>
+	  </div>
+
+    </main>
+  </div>
+</div>
+		</body>
+</html>
