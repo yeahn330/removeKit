@@ -33,6 +33,12 @@
 		$("#goIssueTab").click(function(){
 			
 		})
+		
+		$("#defaultReg").val("[문의]\n"
+						  + "\n"
+						  + "[답변]\n"
+						  );
+		
 
 		$("#goReg").change(function(){
 			var goRegIssue = $("#goReg").val();
@@ -90,6 +96,16 @@
 			<textarea rows="3" cols="50" id="goReg" ></textarea><br>
 			<textarea rows="5" cols="50" id="goRegView" ></textarea><br>
 			<textarea rows="3" cols="50" id="goRegMes" ></textarea>
+		  </div>
+	  </div>
+	  
+	  <div id="defaultIssueTab" style="display:;" >
+		  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+			<h1 class="h2">일반문의 생성기</h1>
+			
+		  </div>
+		  <div class="container">
+			<textarea rows="5" cols="50" id="defaultReg" ></textarea><br>
 		  </div>
 	  </div>
 
