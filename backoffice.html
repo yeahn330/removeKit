@@ -15,6 +15,9 @@
 
 	<script type="text/javascript">
 		$(document).ready(function () {
+
+		$("#defaultIssueTab").css("display","");
+		$("#goIssueTab").css("display","none");
 		
 		var goRegIssue = "[클라우드/회사명] 문의문의문의문의문의문의";
 		var splArr = goRegIssue.split(']');
@@ -30,9 +33,6 @@
 						  + $("#goReg").val()
 						  );
 						  
-		$("#goIssueTab").click(function(){
-			
-		})
 
 		$("#goReg").change(function(){
 			var goRegIssue = $("#goReg").val();
@@ -56,7 +56,6 @@
 						  );
 		
 		
-		
 		var defaultCount = $("input[name=inlineRadioOptions]").length;
 		for(var i=0; i<=defaultCount; i++){
 			$("#inlineRadio"+i).click(function(){
@@ -69,8 +68,21 @@
 			});
 		}
 		
-		
-		
+		$("#defaultIssueBtn").click(function(){
+			$(this).attr('class','btn btn-primary');
+			$("#goIssueBtn").attr('class','btn btn-outline-warning');
+
+			$("#defaultIssueTab").css("display","");
+			$("#goIssueTab").css("display","none");
+		});
+
+		$("#goIssueBtn").click(function(){
+			$(this).attr('class','btn btn-warning');
+			$("#defaultIssueBtn").attr('class','btn btn-outline-primary');
+
+			$("#goIssueTab").css("display","");
+			$("#defaultIssueTab").css("display","none");
+		});
 		
 		});
 	</script>
@@ -97,24 +109,16 @@
   <div class="row">
    
     <main role="main" class="col-md-9">
-	
+	  <p></p>
       <p>
-		<a href="#" class="btn btn-primary my-2">GO이슈 생성기</a>
+		<button type="button" class="btn btn-primary" id="defaultIssueBtn">일반문의 생성기</button>
+		<button type="button" class="btn btn-outline-warning" id="goIssueBtn">GO이슈 생성기</button>
       </p>
 
-	  <div id="goIssueTab" style="display:;" >
-		  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-			<h2 class="h2">GO이슈 생성기</h2>
-			
-		  </div>
-		  <div class="container">
-			<textarea rows="3" cols="50" id="goReg" ></textarea><br>
-			<textarea rows="5" cols="50" id="goRegView" ></textarea><br>
-			<textarea rows="3" cols="50" id="goRegMes" ></textarea>
-		  </div>
-	  </div>
 	  
-	  <div id="defaultIssueTab" style="display:;" >
+
+	  
+	  <div id="defaultIssueTab">
 		  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
 			<h2 class="h2">일반문의 생성기</h2>
 		  </div>
@@ -140,9 +144,21 @@
 			<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="사업팀 연락처 안내">
 			<label class="form-check-label" for="inlineRadio6">사업팀 연락처 안내</label>
 		  </div>
-
+		  <p></p>
 		  <div class="container">
 			<textarea rows="5" cols="50" id="defaultReg" ></textarea><br>
+		  </div>
+	  </div>
+
+	  <div id="goIssueTab">
+		  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+			<h2 class="h2">GO이슈 생성기</h2>
+			
+		  </div>
+		  <div class="container">
+			<textarea rows="3" cols="50" id="goReg" ></textarea><br>
+			<textarea rows="5" cols="50" id="goRegView" ></textarea><br>
+			<textarea rows="3" cols="50" id="goRegMes" ></textarea>
 		  </div>
 	  </div>
 
