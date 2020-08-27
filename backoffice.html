@@ -33,12 +33,6 @@
 		$("#goIssueTab").click(function(){
 			
 		})
-		
-		$("#defaultReg").val("[문의]\n"
-						  + "\n"
-						  + "[답변]\n"
-						  );
-		
 
 		$("#goReg").change(function(){
 			var goRegIssue = $("#goReg").val();
@@ -55,6 +49,27 @@
 							+ $("#goReg").val()
 							);
 		});
+		
+		$("#defaultReg").val("[문의]\n"
+						  + "\n"
+						  + "[답변]\n"
+						  );
+		
+		
+		
+		var defaultCount = $("input[name=inlineRadioOptions]").length;
+		for(var i=0; i<=defaultCount; i++){
+			$("#inlineRadio"+i).click(function(){
+				console.log(">>>>"+i)
+				$("#defaultReg").val("[문의]\n"
+							  + "\n"
+							  + "[답변]\n"
+							  + $('input[name="inlineRadioOptions"]:checked').val()
+							  );
+			});
+		}
+		
+		
 		
 		
 		});
@@ -89,7 +104,7 @@
 
 	  <div id="goIssueTab" style="display:;" >
 		  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-			<h1 class="h2">GO이슈 생성기</h1>
+			<h2 class="h2">GO이슈 생성기</h2>
 			
 		  </div>
 		  <div class="container">
@@ -101,9 +116,31 @@
 	  
 	  <div id="defaultIssueTab" style="display:;" >
 		  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-			<h1 class="h2">일반문의 생성기</h1>
+			<h2 class="h2">일반문의 생성기</h2>
+		  </div>
+		  <div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="불가함 안내">
+			<label class="form-check-label" for="inlineRadio1">불가함 안내</label>
+			&nbsp;&nbsp;&nbsp;
+			<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="경로안내">
+			<label class="form-check-label" for="inlineRadio2">경로안내</label>
+			&nbsp;&nbsp;&nbsp;
+			<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="가이드 안내">
+			<label class="form-check-label" for="inlineRadio3">가이드 안내</label>
 			
 		  </div>
+		  <p></p>
+		  <div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="전달드림 안내">
+			<label class="form-check-label" for="inlineRadio4">전달드림 안내</label>
+			&nbsp;&nbsp;&nbsp;
+			<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="온라인문의 안내">
+			<label class="form-check-label" for="inlineRadio5">온라인문의 안내</label>
+			&nbsp;&nbsp;&nbsp;
+			<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="사업팀 연락처 안내">
+			<label class="form-check-label" for="inlineRadio6">사업팀 연락처 안내</label>
+		  </div>
+
 		  <div class="container">
 			<textarea rows="5" cols="50" id="defaultReg" ></textarea><br>
 		  </div>
