@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>귀찮은거 제거킷</title>
+
+        <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/backoffice.css" rel="stylesheet">
+	
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+		$("#siteAdminUrlMakingTab").css("display","");
+		$("#goIssueTab").css("display","none");
+		$("#OfficeTab").css("display","none");
+		
+		
+		//url생성기
+		var sccUrl = "";
+		var cloudnn = ""
+		
+		$("#cloudNum").change(function(){
+			cloudnn = $("#cloudNum").val();
+			if($("#cloudNum").val() == "1"){
+				cloudnn = "";
+			}
+		
+			sccUrl = "https://cloud"+cloudnn+".daouoffice.com:8443/go/admin/company?companyId="+$("#companyId").val();
+			$("#siteUrlScc").val(sccUrl);
+		});
+		
+		$("#companyId").change(function(){
+			cloudnn = $("#cloudNum").val();
+			if($("#cloudNum").val() == "1"){
+				cloudnn = "";
+			}
+		
+			sccUrl = "https://cloud"+cloudnn+".daouoffice.com:8443/go/admin/company?companyId="+$("#companyId").val();
+			$("#siteUrlScc").val(sccUrl);
+		});
+		
+		//go이슈 생성기		
+		var goRegIssue = "[클라우드/회사명] 문의문의문의문의문의문의";
+		var splArr = goRegIssue.split(']');
+		$("#goReg").val(goRegIssue);
+		$("#goRegView").val("[문제현상]\n"
+						  + "1."+splArr[1]+"\n"
+						  + "\n"
+						  + "[테스트]\n"
+						  + "1. 현상 녹화파일 첨부"
+						  );
+						  
+		$("#goRegMes").val("GO-35077\n"
+						  + $("#goReg").val()
+						  );
+						  
+
+		$("#goReg").change(function(){
+			var goRegIssue = $("#goReg").val();
+			var splArr = goRegIssue.split(']');
+			
+			$("#goRegView").val("[문제현상]\n"
+						  + "1."+splArr[1]+"\n"
+						  + "\n"
+						  + "[테스트]\n"
+						  + "1. 현상 녹화파일 첨부"
+						  );
+		
+			$("#goRegMes").val("GO-35077\n"
+							+ $("#goReg").val()
+							);
+		});
+		
+		//연구소등록 생성기
+		var officeTitle = "[클라우드/회사명] 문의문의문의문의문의문의";
+		$("#officeTitle").val(officeTitle);
+		
+		$("#officeTitle").change(function(){
+			var manOfficeTitle = $("#officeTitle").val();
+			
+			//내용
+			var content = manOfficeTitle.split(']');
+			//클라우드 몇인지
+			var cloudNum = manOfficeTitle.split('/');
+			var cloudNum2 = cloudNum[0].split('[');
+			//회사명
+			var companyName = cloudNum[1].split(']');
+			
+			$("#officeContent").val("안녕하세요. 고객지원팀 안영은입니다. \n"
+								+ "아래 내용 확인후 답변 부탁 드립니다. \n"
+								+ "\n"
+								+ "상호명: "+companyName[0]+"\n"
+								+ "서비스유형: "+cloudNum2[1]+"\n"
+								+ "요청사항: "+content[1]+"\n"
+								+ "이슈번호: \n"
+								+ "\n"
+								+ "확인 부탁 드립니다."
+								);
+		});
+		
+		
+		
+		//버튼 활성화/비활성화 처리 리팩터링 필요함
+		$("#urlMakingBtn").click(function(){
+			$(this).attr('class','btn btn-primary');
+			$("#goIssueBtn").attr('class','btn btn-outline-success');
+			$("#OfficeBtn").attr('class','btn btn-outline-info');
+
+			$("#siteAdminUrlMakingTab").css("display","");
+			$("#goIssueTab").css("display","none");
+			$("#OfficeTab").css("display","none");			
+		});
+
+		$("#goIssueBtn").click(function(){
+			$(this).attr('class','btn btn-success');
+			$("#urlMakingBtn").attr('class','btn btn-outline-primary');
+			$("#OfficeBtn").attr('class','btn btn-outline-info');
+
+			$("#goIssueTab").css("display","");
+			$("#siteAdminUrlMakingTab").css("display","none");
+			$("#OfficeTab").css("display","none");			
+		});
+		
+		$("#OfficeBtn").click(function(){
+			$(this).attr('class','btn btn-info');
+			$("#goIssueBtn").attr('class','btn btn-outline-success');
+			$("#urlMakingBtn").attr('class','btn btn-outline-info');
+
+			$("#OfficeTab").css("display","");
+			$("#siteAdminUrlMakingTab").css("display","none");
+			$("#goIssueTab").css("display","none");
+		});
+		
+		});
+	</script>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+<div class="container-fluid">
+  <div class="row">
+   
+    <main role="main" class="col-md-9">
+	  <p></p>
+      <p>
+		<button type="button" class="btn btn-primary" id="urlMakingBtn">사이트관리자URL 생성기</button>
+		<button type="button" class="btn btn-outline-success" id="goIssueBtn">GO이슈 생성기</button>
+		<button type="button" class="btn btn-outline-info" id="OfficeBtn">연구소등록 생성기</button>
+      </p>
+
+		
+	  <!-- 사이트관리자URL 생성기 -->
+	  <div id="siteAdminUrlMakingTab">
+		  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+			<h2 class="h2">사이트관리자URL 생성기</h2>
+			
+		  </div>
+		  <div class="container">
+			<textarea rows="1" cols="50" id="cloudNum" ></textarea><br>
+			<textarea rows="1" cols="50" id="companyId" ></textarea><br>
+			<textarea rows="3" cols="50" id="siteUrlScc" ></textarea>
+		  </div>
+	  </div>
+
+	  <!-- GO이슈 생성기 -->
+	  <div id="goIssueTab">
+		  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+			<h2 class="h2">GO이슈 생성기</h2>
+			
+		  </div>
+		  <div class="container">
+			<textarea rows="3" cols="50" id="goReg" ></textarea><br>
+			<textarea rows="5" cols="50" id="goRegView" ></textarea><br>
+			<textarea rows="3" cols="50" id="goRegMes" ></textarea>
+		  </div>
+	  </div>
+	  
+	  <!-- 연구소등록 생성기 -->
+	  <div id="OfficeTab">
+		  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+			<h2 class="h2">연구소등록 생성기</h2>
+			
+		  </div>
+		  <div class="container">
+			<textarea rows="3" cols="50" id="officeTitle" ></textarea><br>
+			<textarea rows="10" cols="50" id="officeContent" ></textarea><br>
+		  </div>
+	  </div>
+	  
+	  
+
+    </main>
+  </div>
+</div>
+		</body>
+</html>
