@@ -12,7 +12,6 @@
 	
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.bundle.js"></script>
-
 	<script type="text/javascript">
 		$(document).ready(function () {
 
@@ -38,12 +37,10 @@
 		}else{cloudnn = cloudnn[0];}
 		
 		sitenn = (JSON.stringify(cloudNnSiteurl)).split('/');
-				
-			sccUrl = "https://cloud"+cloudnn+".daouoffice.com:8443/go/admin/company?companyId="+sitenn[7];
-			$("#siteUrlScc").val(sccUrl);
+		sccUrl = "https://cloud"+cloudnn+".daouoffice.com:8443/go/admin/company?companyId="+sitenn[7];
+		
+		$("#adminUrlOpen").val(sccUrl);
 			
-			var openNewWindow = window.open("about:blank");
-			openNewWindow.location.href = sccUrl;
 		});
 				
 		//go이슈/연구소 생성기		
@@ -107,8 +104,8 @@
 			console.log(taskTitle2);
 			
 			$("#taskContent").val("1. 고객 정보 : "+taskTitle2[0]+"/ "+taskTitle2[1]+" / "
-								+taskInfo[1]+" ("+taskInfo[2]+") / "+taskInfo[0]+"(황은진씨)\n"
-								+ "2. 요청 내용 :\n"
+								+taskInfo[1]+" ("+taskInfo[2]+") / "+taskInfo[0]+"(미할당)\n"
+								+ "2. 요청 내용 :"+taskTitle2[2]+"\n"
 								+ "3. 요청 사유 :"+taskTitle2[2]+"전달 부탁드립니다.\n"
 								+ "4. 추가 정보 : -"
 								);
@@ -189,7 +186,8 @@
 		  </div>
 		  <div class="container">
 			<textarea rows="2" cols="50" id="cloudNn" ></textarea><br>
-			<textarea rows="3" cols="50" id="siteUrlScc" ></textarea>
+			<textarea rows="2" cols="50" id="adminUrlOpen" ></textarea><br>
+			<button type="button" class="btn btn-primary" id="openUrl">### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 관리자페이지 URL 이동 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;###</button>
 		  </div>
 	  </div>
 

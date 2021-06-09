@@ -1,6 +1,6 @@
 {
-  "name": "electron-quick-start",
-  "version": "2.1.1",
+  "name": "testestest",
+  "version": "2.1.2",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
@@ -22,13 +22,13 @@
     "electron-builder": "^22.9.1"
   },
   "build": {
-    "productName": "removeKit",
-    "appId": "com.removeKit",
+    "productName": "removeKitTest",
+    "appId": "com.removeKitTest",
     "asar": true,
     "protocols": {
-      "name": "removeKit",
+      "name": "removeKitTest",
       "schemes": [
-        "removeKit"
+        "removeKitTest"
       ]
     },
     "win": {
